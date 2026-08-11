@@ -1,33 +1,33 @@
-# Team Harness Architecture
+# Team Harness 架构文档
 
-## Overview
-Team Harness is a multi-agent AI development framework that orchestrates specialized agents through structured workflows to deliver high-quality software development outcomes.
+## 概述
+Team Harness 是一个多 Agent AI 开发框架，通过结构化工作流协调专业 Agent，交付高质量的软件开发成果。
 
-## Core Concepts
+## 核心概念
 
-### 1. Rules
-Global and language-specific coding standards that all agents must follow.
+### 1. 规则 (Rules)
+全局和特定语言的编码标准，所有 Agent 必须遵循。
 
-**Structure**:
+**结构**:
 ```
 rules/
-├── global/          # Universal rules
+├── global/          # 通用规则
 │   └── base.md
-├── java/            # Java-specific rules
+├── java/            # Java 规则
 │   └── java-backend.md
-└── frontend/        # Frontend rules
+└── frontend/        # 前端规则
 ```
 
-**Purpose**: Ensure consistency, quality, and best practices across all code generation.
+**目的**: 确保所有代码生成的一致性、质量和最佳实践。
 
-### 2. Skills
-Reusable capabilities that agents can invoke to perform specific tasks.
+### 2. 技能 (Skills)
+Agent 可调用的可复用能力单元。
 
-**Structure**:
+**结构**:
 ```
 skills/
-├── common/                    # General-purpose skills
-├── development/               # Development lifecycle skills
+├── common/                    # 通用技能
+├── development/               # 开发生命周期技能
 │   ├── requirement-analysis/
 │   ├── architecture-design/
 │   ├── task-planning/
@@ -35,222 +35,206 @@ skills/
 │   ├── debugging/
 │   ├── testing/
 │   └── code-review/
-└── technology/                # Technology-specific skills
+└── technology/                # 技术栈技能
     ├── java/
     ├── springboot/
     ├── mysql/
     └── vue/
 ```
 
-**Categories**:
-- **Common**: Cross-cutting skills (finding skills, creating skills)
-- **Development**: SDLC phase-specific skills
-- **Technology**: Stack-specific expertise
-- **Business**: Domain-specific knowledge
+**分类**:
+- **通用 (Common)**: 跨领域技能
+- **开发 (Development)**: SDLC 阶段技能
+- **技术 (Technology)**: 技术栈专项
+- **业务 (Business)**: 领域专项知识
 
-### 3. Workflows
-Orchestrated sequences of skills and agents for complete development processes.
+### 3. 工作流 (Workflows)
+编排技能和 Agent 的完整开发流程。
 
-**Available Workflows**:
-- `feature.md`: Full feature development lifecycle
-- `bugfix.md`: Systematic bug investigation and resolution
-- `refactor.md`: Code quality improvement process
-- `review.md`: Comprehensive code review
-- `testing.md`: Multi-level testing strategy
-- `release.md`: Release management and deployment
+**可用工作流**:
+- `feature.md`: 完整特性开发生命周期
+- `bugfix.md`: 系统化 Bug 调查和修复
+- `refactor.md`: 代码质量改善流程
+- `review.md`: 全面代码审查
+- `testing.md`: 多层级测试策略
+- `release.md`: 发布管理和部署
 
-**Purpose**: Guide complex multi-step processes from start to finish.
+**目的**: 引导复杂的多步骤流程从头到尾完成。
 
-### 4. Agents
-Specialized AI agents with specific roles and expertise.
+### 4. Agent (智能体)
+具有特定角色和专长的 AI Agent。
 
-**Agent Types**:
-- **Planner**: Strategic planning and task breakdown
-- **Coder**: Implementation and code writing
-- **Reviewer**: Quality assurance and code review
-- **Debugger**: Issue diagnosis and resolution
+**Agent 类型**:
+- **Planner (规划)**: 战略规划和任务分解
+- **Coder (编码)**: 代码实现和编写
+- **Reviewer (审查)**: 质量保障和代码审查
+- **Debugger (调试)**: 问题诊断和修复
 
-**Properties**:
-- Name and description
-- Model configuration
-- Responsibilities
-- Output format
-- Interaction style
+**属性**:
+- 名称和描述
+- 模型配置
+- 职责范围
+- 输出格式
+- 交互风格
 
-### 5. Templates
-Standardized document formats for consistency.
+### 5. 模板 (Templates)
+标准化的文档格式，确保输出一致性。
 
-**Available Templates**:
-- `AGENTS.md`: Project AI guide template
-- `project.md`: Project description template
-- `task.md`: Task specification template
-- `plan.md`: Implementation plan template
+**可用模板**:
+- `AGENTS.md`: 项目 AI 指南模板
+- `project.md`: 项目描述模板
+- `task.md`: 任务规格模板
+- `plan.md`: 实施计划模板
 
-## System Architecture
+## 系统架构
 
-### Agent Orchestration Flow
+### Agent 协作流程
 
 ```
-User Request
+用户请求
     ↓
-Workflow Selection
+工作流选择
     ↓
-Agent Coordination
+Agent 协调
     ↓
-    ├─→ Planner Agent ──→ Create Plan
-    ├─→ Coder Agent ───→ Implement Code
-    ├─→ Reviewer Agent ─→ Review Code
-    └─→ Debugger Agent ─→ Fix Issues
+    ├─→ 规划 Agent ──→ 创建计划
+    ├─→ 编码 Agent ──→ 实现代码
+    ├─→ 审查 Agent ──→ 审查代码
+    └─→ 调试 Agent ──→ 修复问题
     ↓
-Deliverable Output
+交付产出
 ```
 
-### Component Interactions
+### 组件交互
 
 ```
 ┌─────────────┐
-│   Rules     │◄─────┐
+│    规则     │◄─────┐
 └─────────────┘      │
-                     │ Consulted by
+                     │ 被查阅
 ┌─────────────┐      │
-│   Skills    │◄─────┤
-└─────────────┘      │
-       ▲             │
-       │ Invoked by  │
-       │             │
-┌─────────────┐      │
-│  Workflows  │──────┤
+│    技能     │◄─────┤
 └─────────────┘      │
        ▲             │
-       │ Executed by │
+       │ 被调用      │
        │             │
 ┌─────────────┐      │
-│   Agents    │──────┘
+│   工作流    │──────┤
+└─────────────┘      │
+       ▲             │
+       │ 被执行      │
+       │             │
+┌─────────────┐      │
+│   Agent     │──────┘
 └─────────────┘
        ▲
-       │ Instantiated by
+       │ 被实例化
        │
 ┌─────────────┐
-│  Templates  │
+│    模板     │
 └─────────────┘
 ```
 
-## Design Principles
+## 设计原则
 
-### 1. Modularity
-Each component (rule, skill, workflow, agent) is self-contained and reusable.
+### 1. 模块化
+每个组件（规则、技能、工作流、Agent）独立且可复用。
 
-### 2. Composability
-Components can be combined in different ways to achieve various outcomes.
+### 2. 可组合性
+组件可以不同方式组合以实现各种目标。
 
-### 3. Specialization
-Each agent has a specific role and expertise area.
+### 3. 专业化
+每个 Agent 有特定角色和专长领域。
 
-### 4. Consistency
-Templates and rules ensure uniform output quality.
+### 4. 一致性
+模板和规则确保统一的输出质量。
 
-### 5. Extensibility
-New skills, workflows, and agents can be added without modifying existing ones.
+### 5. 可扩展性
+可添加新技能、工作流和 Agent 而不修改现有组件。
 
-## Usage Patterns
+## 使用模式
 
-### Pattern 1: Feature Development
+### 模式 1: 特性开发
 ```
-User: "Implement user authentication"
-  → feature.md workflow
-    → Planner agent (requirement analysis, task planning)
-    → Coder agent (implementation)
-    → Reviewer agent (code review)
-    → Deliverable: Working feature with tests
-```
-
-### Pattern 2: Bug Fix
-```
-User: "Fix login timeout issue"
-  → bugfix.md workflow
-    → Debugger agent (root cause analysis)
-    → Coder agent (fix implementation)
-    → Reviewer agent (fix verification)
-    → Deliverable: Bug fix with regression test
+用户: "实现用户认证"
+  → feature.md 工作流
+    → 规划 Agent (需求分析, 任务规划)
+    → 编码 Agent (代码实现)
+    → 审查 Agent (代码审查)
+    → 交付: 可工作的特性 + 测试
 ```
 
-### Pattern 3: Code Review
+### 模式 2: Bug 修复
 ```
-User: "Review PR #123"
-  → review.md workflow
-    → Reviewer agent (comprehensive review)
-    → Deliverable: Review comments and approval
+用户: "修复登录超时问题"
+  → bugfix.md 工作流
+    → 调试 Agent (根因分析)
+    → 编码 Agent (修复实现)
+    → 审查 Agent (修复验证)
+    → 交付: Bug 修复 + 回归测试
 ```
 
-## Extension Points
+### 模式 3: 代码审查
+```
+用户: "审查 PR #123"
+  → review.md 工作流
+    → 审查 Agent (全面审查)
+    → 交付: 审查意见和批准
+```
 
-### Adding New Skills
-1. Create skill directory under appropriate category
-2. Define skill metadata and implementation
-3. Document inputs, outputs, and usage
-4. Add skill to relevant workflows
+## 扩展方式
 
-### Adding New Agents
-1. Create agent definition in `agents/`
-2. Specify model, responsibilities, and behavior
-3. Define output format and interaction style
-4. Update workflows to utilize new agent
+### 添加新技能
+1. 在合适的分类下创建技能目录
+2. 定义技能元数据和实现
+3. 记录输入、输出和用法
+4. 将技能加入相关工作流
 
-### Adding New Workflows
-1. Create workflow file in `workflows/`
-2. Define stages and skill invocations
-3. Specify entry and exit criteria
-4. Document usage and examples
+### 添加新 Agent
+1. 在 `agents/` 下创建 Agent 定义
+2. 指定模型、职责和行为
+3. 定义输出格式和交互风格
+4. 更新工作流以使用新 Agent
 
-### Adding New Rules
-1. Create rule file in appropriate category
-2. Define standards and guidelines
-3. Ensure rules are language/technology appropriate
-4. Reference from relevant skills and agents
+### 添加新工作流
+1. 在 `workflows/` 下创建工作流文件
+2. 定义阶段和技能调用
+3. 指定进入和退出条件
+4. 记录用法和示例
 
-## Quality Gates
+### 添加新规则
+1. 在合适的分类下创建规则文件
+2. 定义标准和指南
+3. 确保规则适用于对应语言/技术
+4. 在相关技能和 Agent 中引用
 
-Each workflow includes built-in quality gates:
-- **Requirements**: Clear acceptance criteria
-- **Implementation**: Code standards compliance
-- **Testing**: Coverage and quality thresholds
-- **Review**: Peer validation
-- **Deployment**: Production readiness checks
+## 质量门禁
 
-## Best Practices
+每个工作流包含内置质量门禁：
+- **需求**: 清晰的验收标准
+- **实现**: 代码规范合规
+- **测试**: 覆盖率和质量阈值
+- **审查**: 同行验证
+- **部署**: 生产就绪检查
 
-### For Users
-- Choose appropriate workflow for the task
-- Provide clear requirements and context
-- Review agent outputs and provide feedback
-- Use templates for consistency
+## 最佳实践
 
-### For Agents
-- Follow rules strictly
-- Use skills as designed
-- Produce structured output per templates
-- Document decisions and trade-offs
-- Ask clarifying questions when needed
+### 对使用者
+- 为任务选择合适的工作流
+- 提供清晰的需求和上下文
+- 审查 Agent 输出并提供反馈
+- 使用模板确保一致性
 
-### For System Maintenance
-- Keep rules up to date with best practices
-- Evolve skills based on usage patterns
-- Refine workflows based on outcomes
-- Update agent behaviors based on feedback
-- Maintain template relevance
+### 对 Agent
+- 严格遵循规则
+- 按设计使用技能
+- 按模板产出结构化输出
+- 记录决策和取舍
+- 需要时提出澄清问题
 
-## Future Enhancements
-
-### Planned Features
-- Agent learning from past executions
-- Workflow optimization based on metrics
-- Dynamic agent selection
-- Cross-workflow coordination
-- Performance analytics and reporting
-
-### Integration Points
-- CI/CD pipeline integration
-- Issue tracking system sync
-- Code repository hooks
-- Team collaboration tools
-- Monitoring and alerting systems
+### 对系统维护
+- 与最佳实践同步更新规则
+- 基于使用模式演进技能
+- 基于执行结果优化工作流
+- 基于反馈更新 Agent 行为
+- 保持模板的时效性

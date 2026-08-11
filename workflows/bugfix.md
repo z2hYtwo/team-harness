@@ -1,45 +1,45 @@
-# Bug Fix Workflow
+# Bug 修复工作流
 
-## Overview
-Systematic approach to identifying, fixing, and verifying bug fixes.
+## 概述
+系统化的问题定位、修复和验证流程。
 
-## Stages
+## 阶段
 
-### 1. Bug Investigation
-- Reproduce the issue
-- Analyze logs and stack traces
-- Identify root cause
-- Skill: `/debugging`
+### 1. 问题调查
+- 复现问题
+- 分析日志和堆栈信息
+- 定位根因
+- 技能: `/debugging`
 
-### 2. Impact Assessment
-- Determine severity and scope
-- Check for similar issues
-- Evaluate fix approaches
+### 2. 影响评估
+- 确定严重程度和范围
+- 排查类似问题
+- 评估修复方案
 
-### 3. Fix Implementation
-- Write minimal fix
-- Add regression tests
-- Update documentation if needed
-- Skill: `/implementation`
+### 3. 修复实现
+- 编写最小修复代码
+- 添加回归测试
+- 更新相关文档
+- 技能: `/implementation`
 
-### 4. Verification
-- Verify fix resolves issue
-- Run full test suite
-- Test edge cases
-- Skill: `/testing`
+### 4. 验证
+- 验证修复是否解决问题
+- 运行完整测试套件
+- 测试边界情况
+- 技能: `/testing`
 
-### 5. Review & Deploy
-- Code review
-- Deploy to staging
-- Monitor production rollout
-- Skill: `/code-review`
+### 5. 审查与部署
+- 代码审查
+- 部署到预发环境
+- 监控生产环境
+- 技能: `/code-review`
 
-## Entry Criteria
-- Bug report with reproduction steps
-- Priority assigned
+## 进入条件
+- 有 Bug 报告和复现步骤
+- 已分配优先级
 
-## Exit Criteria
-- Bug fixed and verified
-- Tests added
-- No regression introduced
-- Deployed to production
+## 退出条件
+- Bug 已修复并验证
+- 已添加回归测试
+- 无新增回归问题
+- 已部署到生产环境

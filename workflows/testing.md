@@ -1,45 +1,45 @@
-# Testing Workflow
+# 测试工作流
 
-## Overview
-Comprehensive testing strategy covering unit, integration, and end-to-end tests.
+## 概述
+涵盖单元测试、集成测试和端到端测试的全面测试策略。
 
-## Stages
+## 阶段
 
-### 1. Test Planning
-- Define test scope
-- Identify test cases
-- Plan test data
-- Skill: `/task-planning`
+### 1. 测试规划
+- 定义测试范围
+- 识别测试用例
+- 准备测试数据
+- 技能: `/task-planning`
 
-### 2. Unit Testing
-- Test individual components
-- Mock dependencies
-- Achieve target coverage
-- Skill: `/testing`
+### 2. 单元测试
+- 测试独立组件
+- Mock 外部依赖
+- 达到目标覆盖率
+- 技能: `/testing`
 
-### 3. Integration Testing
-- Test component interactions
-- Test database integration
-- Test API contracts
-- Skill: `/testing`
+### 3. 集成测试
+- 测试组件交互
+- 测试数据库集成
+- 测试 API 契约
+- 技能: `/testing`
 
-### 4. System Testing
-- End-to-end scenarios
-- Performance testing
-- Security testing
+### 4. 系统测试
+- 端到端场景测试
+- 性能测试
+- 安全测试
 
-### 5. Test Review
-- Review test quality
-- Check coverage metrics
-- Refactor test code
-- Skill: `/code-review`
+### 5. 测试审查
+- 审查测试质量
+- 检查覆盖率指标
+- 重构测试代码
+- 技能: `/code-review`
 
-## Entry Criteria
-- Code implementation complete
-- Test environment available
+## 进入条件
+- 代码实现已完成
+- 测试环境已就绪
 
-## Exit Criteria
-- Target coverage achieved
-- All tests passing
-- Test code reviewed
-- CI/CD integration complete
+## 退出条件
+- 达到目标覆盖率
+- 所有测试通过
+- 测试代码已审查
+- CI/CD 集成完成

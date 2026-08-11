@@ -1,48 +1,48 @@
-# Release Workflow
+# 发布工作流
 
-## Overview
-Manage the complete release process from preparation to deployment.
+## 概述
+管理从准备到部署的完整发布流程。
 
-## Stages
+## 阶段
 
-### 1. Release Preparation
-- Create release branch
-- Update version numbers
-- Generate changelog
-- Review dependencies
+### 1. 发布准备
+- 创建发布分支
+- 更新版本号
+- 生成变更日志
+- 审查依赖
 
-### 2. Release Testing
-- Run full test suite
-- Execute smoke tests
-- Perform UAT
-- Security scan
-- Skill: `/testing`
+### 2. 发布测试
+- 运行完整测试套件
+- 执行冒烟测试
+- 进行 UAT 验收
+- 安全扫描
+- 技能: `/testing`
 
-### 3. Release Documentation
-- Update release notes
-- Document breaking changes
-- Update deployment guide
-- Prepare rollback plan
+### 3. 发布文档
+- 更新发布说明
+- 记录破坏性变更
+- 更新部署指南
+- 准备回滚方案
 
-### 4. Deployment
-- Deploy to staging
-- Verify staging deployment
-- Deploy to production
-- Monitor metrics
+### 4. 部署
+- 部署到预发环境
+- 验证预发部署
+- 部署到生产环境
+- 监控指标
 
-### 5. Post-Release
-- Tag release in git
-- Announce release
-- Monitor for issues
-- Address hotfixes if needed
+### 5. 发布后
+- 打 Git Tag
+- 发布公告
+- 监控问题
+- 处理 Hotfix（如需要）
 
-## Entry Criteria
-- All features complete and merged
-- QA sign-off received
-- Stakeholder approval
+## 进入条件
+- 所有特性已完成并合并
+- QA 已签收
+- 相关方已批准
 
-## Exit Criteria
-- Successfully deployed to production
-- No critical issues
-- Release documented
-- Team notified
+## 退出条件
+- 成功部署到生产环境
+- 无严重问题
+- 发布已记录
+- 团队已通知

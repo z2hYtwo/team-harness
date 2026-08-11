@@ -1,240 +1,232 @@
 ---
 name: task-planning
-description: Break down features into actionable implementation tasks
+description: 将特性分解为可执行的实现任务
 agent: planner
 ---
 
-# Task Planning Skill
+# 任务规划技能
 
-## Purpose
-Decompose features into concrete, manageable tasks with clear dependencies and estimates.
+## 目的
+将特性分解为具体、可管理的任务，明确依赖关系和工作量估算。
 
-## Process
+## 流程
 
-### 1. Feature Analysis
-- Review requirements and architecture
-- Identify major work areas
-- Spot technical challenges
-- Note dependencies
+### 1. 特性分析
+- 审查需求和架构
+- 识别主要工作区域
+- 发现技术难点
+- 标注依赖关系
 
-### 2. Task Identification
-- Break down into atomic tasks
-- Define task scope clearly
-- Estimate effort realistically
-- Assign skills needed
+### 2. 任务识别
+- 拆解为原子任务
+- 明确任务边界
+- 合理估算工作量
+- 标注所需技能
 
-### 3. Dependency Mapping
-- Identify task dependencies
-- Plan execution order
-- Group parallel work
-- Identify critical path
+### 3. 依赖映射
+- 识别任务依赖
+- 规划执行顺序
+- 分组并行工作
+- 识别关键路径
 
-### 4. Risk Planning
-- Identify technical risks
-- Plan for unknowns
-- Buffer complex tasks
-- Prepare alternatives
+### 4. 风险规划
+- 识别技术风险
+- 为未知预留缓冲
+- 复杂任务加 Buffer
+- 准备备选方案
 
-## Input
-- Requirements specification
-- Architecture design
-- Team capabilities
-- Timeline constraints
+## 输入
+- 需求规格
+- 架构设计
+- 团队能力
+- 时间约束
 
-## Output
+## 输出
 ```markdown
-## Task Plan
+## 任务计划
 
-### Overview
-- Feature: [Name]
-- Total Effort: [X hours]
-- Timeline: [Y days/weeks]
-- Team: [Members/Agents]
+### 概要
+- 特性: [名称]
+- 总工作量: [X 小时]
+- 时间线: [Y 天/周]
+- 团队: [成员/Agent]
 
-### Phase 1: [Phase Name]
-**Task 1.1**: [Task name]
-- Description: [What to do]
-- Effort: [Hours]
-- Skills: [Required expertise]
-- Dependencies: [Task IDs]
-- Deliverables: [Concrete outputs]
+### 阶段 1: [阶段名称]
+**任务 1.1**: [任务名称]
+- 描述: [做什么]
+- 工作量: [小时数]
+- 技能: [所需专长]
+- 依赖: [任务 ID]
+- 交付物: [具体产出]
 
-### Dependency Graph
-```
-Task 1.1 (Foundation)
+### 依赖图
+任务 1.1 (基础)
     ↓
-Task 1.2 (Core logic) ← Task 1.3 (Data model)
+任务 1.2 (核心逻辑) ← 任务 1.3 (数据模型)
     ↓
-Task 1.4 (API layer)
+任务 1.4 (API 层)
     ↓
-Task 1.5 (Tests)
-```
+任务 1.5 (测试)
 
-### Critical Path
-Task 1.1 → Task 1.2 → Task 1.4 → Task 1.5 (Total: X hours)
+### 关键路径
+任务 1.1 → 任务 1.2 → 任务 1.4 → 任务 1.5 (总计: X 小时)
 
-### Risks
-- **Risk**: [Description]
-  - Impact: High/Medium/Low
-  - Mitigation: [Strategy]
+### 风险
+- **风险**: [描述]
+  - 影响: 高/中/低
+  - 缓解: [策略]
 ```
 
-## Task Guidelines
+## 任务规范
 
-### Good Task Characteristics
-- **Atomic**: Single, well-defined objective
-- **Estimable**: Can estimate effort confidently
-- **Testable**: Clear success criteria
-- **Independent** (when possible): Minimal dependencies
-- **Small**: Completable in 4-8 hours ideally
+### 好任务的特征
+- **原子性**: 单一、明确的目标
+- **可估算**: 能自信地评估工作量
+- **可测试**: 有清晰的成功标准
+- **独立性**（尽可能）: 最小依赖
+- **小粒度**: 理想情况下 4-8 小时可完成
 
-### Task Categories
-- **Foundation**: Setup, infrastructure, scaffolding
-- **Core**: Business logic, algorithms
-- **Integration**: Connect components
-- **UI/API**: Interface layer
-- **Testing**: Test writing
-- **Documentation**: Docs and comments
+### 任务分类
+- **基础**: 搭建、基础设施、脚手架
+- **核心**: 业务逻辑、算法
+- **集成**: 连接组件
+- **UI/API**: 接口层
+- **测试**: 编写测试
+- **文档**: 文档和注释
 
-## Example
+## 示例
 
-**Input**: User authentication architecture
+**输入**: 用户认证架构
 
-**Output**:
+**输出**:
 ```markdown
-### Overview
-- Feature: User Authentication
-- Total Effort: 48 hours
-- Timeline: 1 week
-- Team: Backend developer + Tester
+### 概要
+- 特性: 用户认证
+- 总工作量: 48 小时
+- 时间线: 1 周
+- 团队: 后端开发 + 测试
 
-### Phase 1: Foundation (12 hours)
+### 阶段 1: 基础搭建 (12 小时)
 
-**Task 1.1**: Setup database schema
-- Description: Create users and sessions tables with indexes
-- Effort: 3 hours
-- Skills: Database design, SQL
-- Dependencies: None
-- Deliverables: Migration scripts, schema documentation
+**任务 1.1**: 创建数据库表结构
+- 描述: 创建 users 和 sessions 表及索引
+- 工作量: 3 小时
+- 技能: 数据库设计, SQL
+- 依赖: 无
+- 交付物: 迁移脚本, 表结构文档
 
-**Task 1.2**: Create User entity and repository
-- Description: JPA entities and repository interfaces
-- Effort: 4 hours
-- Skills: Java, Spring Data JPA
-- Dependencies: Task 1.1
-- Deliverables: User.java, UserRepository.java, unit tests
+**任务 1.2**: 创建 User 实体和 Repository
+- 描述: JPA 实体和 Repository 接口
+- 工作量: 4 小时
+- 技能: Java, Spring Data JPA
+- 依赖: 任务 1.1
+- 交付物: User.java, UserRepository.java, 单元测试
 
-**Task 1.3**: Setup Spring Security configuration
-- Description: Configure security filters, JWT utilities
-- Effort: 5 hours
-- Skills: Spring Security, JWT
-- Dependencies: None
-- Deliverables: SecurityConfig.java, JwtUtil.java
+**任务 1.3**: 配置 Spring Security
+- 描述: 配置安全过滤器, JWT 工具类
+- 工作量: 5 小时
+- 技能: Spring Security, JWT
+- 依赖: 无
+- 交付物: SecurityConfig.java, JwtUtil.java
 
-### Phase 2: Core Implementation (20 hours)
+### 阶段 2: 核心实现 (20 小时)
 
-**Task 2.1**: Implement user registration
-- Description: Registration endpoint with validation and email check
-- Effort: 6 hours
-- Skills: Java, Spring Boot, validation
-- Dependencies: Task 1.2, Task 1.3
-- Deliverables: AuthController.register(), service layer, tests
+**任务 2.1**: 实现用户注册
+- 描述: 注册接口，含验证和邮箱检查
+- 工作量: 6 小时
+- 技能: Java, Spring Boot, 校验
+- 依赖: 任务 1.2, 任务 1.3
+- 交付物: AuthController.register(), 服务层, 测试
 
-**Task 2.2**: Implement login endpoint
-- Description: Authenticate user and generate JWT
-- Effort: 5 hours
-- Skills: Java, Spring Security, JWT
-- Dependencies: Task 1.2, Task 1.3
-- Deliverables: AuthController.login(), authentication logic, tests
+**任务 2.2**: 实现登录接口
+- 描述: 认证用户并生成 JWT
+- 工作量: 5 小时
+- 技能: Java, Spring Security, JWT
+- 依赖: 任务 1.2, 任务 1.3
+- 交付物: AuthController.login(), 认证逻辑, 测试
 
-**Task 2.3**: Implement logout endpoint
-- Description: Invalidate session/token
-- Effort: 3 hours
-- Skills: Java, Spring Security
-- Dependencies: Task 2.2
-- Deliverables: AuthController.logout(), session management
+**任务 2.3**: 实现登出接口
+- 描述: 使会话/Token 失效
+- 工作量: 3 小时
+- 技能: Java, Spring Security
+- 依赖: 任务 2.2
+- 交付物: AuthController.logout(), 会话管理
 
-**Task 2.4**: Implement password reset flow
-- Description: Request reset, verify token, update password
-- Effort: 6 hours
-- Skills: Java, email integration
-- Dependencies: Task 1.2, Task 1.3
-- Deliverables: Password reset endpoints, email templates
+**任务 2.4**: 实现密码重置流程
+- 描述: 请求重置, 验证 Token, 更新密码
+- 工作量: 6 小时
+- 技能: Java, 邮件集成
+- 依赖: 任务 1.2, 任务 1.3
+- 交付物: 密码重置接口, 邮件模板
 
-### Phase 3: Integration & Testing (16 hours)
+### 阶段 3: 集成与测试 (16 小时)
 
-**Task 3.1**: Integration tests
-- Description: End-to-end tests for all auth flows
-- Effort: 8 hours
-- Skills: Testing, Spring Boot Test
-- Dependencies: All Phase 2 tasks
-- Deliverables: Integration test suite
+**任务 3.1**: 集成测试
+- 描述: 所有认证流程的端到端测试
+- 工作量: 8 小时
+- 技能: 测试, Spring Boot Test
+- 依赖: 阶段 2 所有任务
+- 交付物: 集成测试套件
 
-**Task 3.2**: Error handling and validation
-- Description: Comprehensive error responses and input validation
-- Effort: 4 hours
-- Skills: Java, validation
-- Dependencies: All Phase 2 tasks
-- Deliverables: Error handling, validation rules
+**任务 3.2**: 错误处理和校验
+- 描述: 完善错误响应和输入校验
+- 工作量: 4 小时
+- 技能: Java, 校验
+- 依赖: 阶段 2 所有任务
+- 交付物: 错误处理, 校验规则
 
-**Task 3.3**: API documentation
-- Description: OpenAPI/Swagger documentation
-- Effort: 2 hours
-- Skills: OpenAPI, documentation
-- Dependencies: All Phase 2 tasks
-- Deliverables: API docs, examples
+**任务 3.3**: API 文档
+- 描述: OpenAPI/Swagger 文档
+- 工作量: 2 小时
+- 技能: OpenAPI, 文档
+- 依赖: 阶段 2 所有任务
+- 交付物: API 文档, 示例
 
-**Task 3.4**: Security review
-- Description: Review for vulnerabilities, test security
-- Effort: 2 hours
-- Skills: Security testing
-- Dependencies: All above tasks
-- Deliverables: Security checklist, fixes
+**任务 3.4**: 安全审查
+- 描述: 审查漏洞, 测试安全性
+- 工作量: 2 小时
+- 技能: 安全测试
+- 依赖: 以上所有任务
+- 交付物: 安全检查清单, 修复
 
-### Dependency Graph
-```
-Task 1.1 (DB Schema)
+### 依赖图
+任务 1.1 (数据库)
     ↓
-Task 1.2 (Entities) ←┐
-    ↓                │
-    ├────────────────┤
-    ↓                │
-Task 2.1 (Register)  │
-Task 2.2 (Login)     │← Task 1.3 (Security Config)
-Task 2.4 (Reset)     │
-    ↓                │
-Task 2.3 (Logout) ───┘
+任务 1.2 (实体) ←┐
+    ↓             │
+    ├─────────────┤
+    ↓             │
+任务 2.1 (注册)   │
+任务 2.2 (登录)   │← 任务 1.3 (安全配置)
+任务 2.4 (重置)   │
+    ↓             │
+任务 2.3 (登出) ──┘
     ↓
-Task 3.1, 3.2, 3.3 (parallel)
+任务 3.1, 3.2, 3.3 (并行)
     ↓
-Task 3.4 (Security Review)
-```
+任务 3.4 (安全审查)
 
-### Critical Path
-1.1 → 1.2 → 2.1 → 2.2 → 3.1 → 3.4 (33 hours)
+### 关键路径
+1.1 → 1.2 → 2.1 → 2.2 → 3.1 → 3.4 (33 小时)
 
-### Parallel Work Opportunities
-- Task 1.3 can run parallel to 1.1 → 1.2
-- Tasks 2.1, 2.2, 2.4 can partially overlap
-- Tasks 3.1, 3.2, 3.3 can run in parallel
+### 可并行工作
+- 任务 1.3 可与 1.1 → 1.2 并行
+- 任务 2.1, 2.2, 2.4 可部分重叠
+- 任务 3.1, 3.2, 3.3 可并行
 
-### Risks
+### 风险
 
-**Risk**: Email service integration complexity
-- Impact: Medium (affects Task 2.4)
-- Mitigation: Use proven email library, start early
-- Buffer: +2 hours
+**风险**: 邮件服务集成复杂度
+- 影响: 中 (影响任务 2.4)
+- 缓解: 使用成熟邮件库, 尽早开始
+- 缓冲: +2 小时
 
-**Risk**: JWT token security concerns
-- Impact: High (affects all endpoints)
-- Mitigation: Security review in Task 3.4, use industry standards
-- Buffer: Included in security review
-
-**Risk**: Database performance at scale
-- Impact: Low (can optimize later)
-- Mitigation: Proper indexing in Task 1.1
+**风险**: JWT Token 安全性问题
+- 影响: 高 (影响所有接口)
+- 缓解: 任务 3.4 安全审查, 使用行业标准
+- 缓冲: 包含在安全审查中
 ```
 
-## Related Skills
-- `/architecture-design` - Design before planning
-- `/implementation` - Execute the tasks
+## 关联技能
+- `/architecture-design` - 设计后再规划
+- `/implementation` - 执行任务

@@ -1,11 +1,11 @@
-# Project Restructuring Guide
+# 项目重构迁移指南
 
-## Overview
-This document explains the new team-harness structure and how to migrate from the old organization.
+## 概述
+本文档说明 team-harness 新结构及从旧组织方式的迁移路径。
 
-## What Changed
+## 变更内容
 
-### Before
+### 之前
 ```
 team-harness/
 ├── rules/
@@ -14,13 +14,13 @@ team-harness/
 └── docs/
 ```
 
-### After
+### 之后
 ```
 team-harness/
-├── rules/              # Unchanged - coding standards
-├── skills/            # Reorganized by lifecycle phase
+├── rules/              # 不变 - 编码规范
+├── skills/            # 按生命周期阶段重组
 │   ├── common/
-│   ├── development/   # NEW - SDLC phase skills
+│   ├── development/   # 新增 - SDLC 阶段技能
 │   │   ├── requirement-analysis/
 │   │   ├── architecture-design/
 │   │   ├── task-planning/
@@ -28,302 +28,235 @@ team-harness/
 │   │   ├── debugging/
 │   │   ├── testing/
 │   │   └── code-review/
-│   └── technology/    # NEW - tech stack skills
+│   └── technology/    # 新增 - 技术栈技能
 │       ├── java/
 │       ├── springboot/
 │       ├── mysql/
 │       └── vue/
-├── workflows/         # NEW - process orchestration
-├── agents/           # NEW - specialized AI agents
-├── templates/        # Enhanced with more templates
-└── docs/            # Updated documentation
+├── workflows/         # 新增 - 流程编排
+├── agents/           # 新增 - 专业 AI Agent
+├── templates/        # 增强 - 更多模板
+└── docs/            # 更新 - 文档
 ```
 
-## New Concepts
+## 新概念
 
-### 1. Workflows
-**Purpose**: Define end-to-end processes that orchestrate multiple skills and agents.
+### 1. 工作流 (Workflows)
+**用途**: 定义编排多个技能和 Agent 的端到端流程。
 
-**Available Workflows**:
-- `feature.md` - Complete feature development
-- `bugfix.md` - Bug investigation and resolution
-- `refactor.md` - Code quality improvement
-- `review.md` - Code review process
-- `testing.md` - Comprehensive testing
-- `release.md` - Release management
+**可用工作流**:
+- `feature.md` - 完整特性开发
+- `bugfix.md` - Bug 调查和修复
+- `refactor.md` - 代码质量改善
+- `review.md` - 代码审查流程
+- `testing.md` - 全面测试
+- `release.md` - 发布管理
 
-**Usage**:
+**使用方式**:
 ```markdown
-# In your project CLAUDE.md or instructions:
-When developing a new feature, follow the feature workflow:
-1. Requirement analysis
-2. Architecture design
-3. Task planning
-4. Implementation
-5. Testing
-6. Code review
+# 在项目 CLAUDE.md 或指令中:
+开发新特性时，遵循 feature 工作流:
+1. 需求分析
+2. 架构设计
+3. 任务规划
+4. 编码实现
+5. 测试
+6. 代码审查
 ```
 
-### 2. Agents
-**Purpose**: Define specialized AI agents with specific roles and behaviors.
+### 2. Agent (智能体)
+**用途**: 定义具有特定角色和行为的专业 AI Agent。
 
-**Available Agents**:
-- `planner.md` - Strategic planning, requirement analysis, task breakdown
-- `coder.md` - Code implementation, following best practices
-- `reviewer.md` - Code review, quality assurance
-- `debugger.md` - Bug diagnosis and resolution
+**可用 Agent**:
+- `planner.md` - 战略规划, 需求分析, 任务分解
+- `coder.md` - 代码实现, 遵循最佳实践
+- `reviewer.md` - 代码审查, 质量保障
+- `debugger.md` - Bug 诊断和修复
 
-**Usage**:
+**使用方式**:
 ```markdown
-# When you need planning:
-@planner analyze requirements and create implementation plan
+# 需要规划时:
+@planner 分析需求并创建实施计划
 
-# When you need implementation:
-@coder implement user authentication based on the plan
+# 需要实现时:
+@coder 基于计划实现用户认证
 
-# When you need review:
-@reviewer review the authentication implementation
+# 需要审查时:
+@reviewer 审查认证实现
 
-# When you need debugging:
-@debugger investigate login timeout issue
+# 需要调试时:
+@debugger 调查登录超时问题
 ```
 
-### 3. Development Skills
-**Purpose**: Provide structured approaches for each phase of the software development lifecycle.
+### 3. 开发技能 (Development Skills)
+**用途**: 为软件开发生命周期的每个阶段提供结构化方法。
 
-**Organization**:
-- **development/** - SDLC phase skills
-  - requirement-analysis
-  - architecture-design
-  - task-planning
-  - implementation
-  - debugging
-  - testing
-  - code-review
+**组织**:
+- **development/** - SDLC 阶段技能
+  - requirement-analysis (需求分析)
+  - architecture-design (架构设计)
+  - task-planning (任务规划)
+  - implementation (编码实现)
+  - debugging (调试)
+  - testing (测试)
+  - code-review (代码审查)
 
-- **technology/** - Tech stack specific skills
+- **technology/** - 技术栈技能
   - java
   - springboot
   - mysql
   - vue
 
-**Migration from old skills**:
-- Old business-specific skills → Keep in `skills/business/`
-- Old generic skills → Move to `skills/common/` or appropriate development phase
+## 迁移步骤
 
-## Migration Steps
+### 对现有项目
 
-### For Existing Projects
-
-1. **Update CLAUDE.md references**:
+1. **更新 CLAUDE.md 引用**:
 ```markdown
-# Before
-Follow skills in skills/ directory
+# 之前
+遵循 skills/ 目录中的技能
 
-# After
-Follow the workflow appropriate for the task:
-- New feature: workflows/feature.md
-- Bug fix: workflows/bugfix.md
-- Refactoring: workflows/refactor.md
+# 之后
+根据任务选择合适的工作流:
+- 新特性: workflows/feature.md
+- Bug 修复: workflows/bugfix.md
+- 重构: workflows/refactor.md
 
-Use specialized agents for specific tasks:
-- Planning: agents/planner.md
-- Implementation: agents/coder.md
-- Review: agents/reviewer.md
-- Debugging: agents/debugger.md
+使用专业 Agent 处理特定任务:
+- 规划: agents/planner.md
+- 实现: agents/coder.md
+- 审查: agents/reviewer.md
+- 调试: agents/debugger.md
 ```
 
-2. **Update skill references**:
+2. **更新技能引用**:
 ```markdown
-# Before
-Use skills/[skill-name]
+# 之前
+使用 skills/[技能名称]
 
-# After
-Use skills/development/[phase-name]/
-or skills/technology/[tech-name]/
+# 之后
+使用 skills/development/[阶段名称]/
+或 skills/technology/[技术名称]/
 ```
 
-3. **Adopt workflows**:
-- Choose the appropriate workflow for your task
-- Follow its stages in order
-- Use the skills and agents it recommends
+3. **采用工作流**:
+- 为任务选择合适的工作流
+- 按顺序执行各阶段
+- 使用工作流推荐的技能和 Agent
 
-### For New Projects
+### 对新项目
 
-1. **Start with templates**:
-   - Copy `templates/AGENTS.md` to your project root
-   - Fill in project-specific information
+1. **使用模板**:
+   - 复制 `templates/AGENTS.md` 到项目根目录
+   - 填写项目特定信息
 
-2. **Reference workflows**:
-   - Link to relevant workflows in your project docs
-   - Customize stages if needed
+2. **引用工作流**:
+   - 在项目文档中链接相关工作流
+   - 按需定制阶段
 
-3. **Specify agents**:
-   - Define which agents should handle which tasks
-   - Use agent definitions as guidelines
+3. **指定 Agent**:
+   - 定义哪个 Agent 处理哪类任务
+   - 使用 Agent 定义作为指导
 
-## Usage Examples
+## 使用示例
 
-### Example 1: New Feature Development
+### 示例 1: 新特性开发
 
-**Old approach**:
+**旧方式**:
 ```
-1. Manually plan implementation
-2. Write code
-3. Test
-4. Review
+1. 手动规划实现
+2. 编写代码
+3. 测试
+4. 审查
 ```
 
-**New approach**:
+**新方式**:
 ```markdown
-Follow workflows/feature.md:
+遵循 workflows/feature.md:
 
-Stage 1: Requirement Analysis
-- Invoke: skills/development/requirement-analysis/
+阶段 1: 需求分析
+- 调用: skills/development/requirement-analysis/
 - Agent: planner
-- Output: Requirements with acceptance criteria
+- 产出: 带验收标准的需求
 
-Stage 2: Architecture Design
-- Invoke: skills/development/architecture-design/
+阶段 2: 架构设计
+- 调用: skills/development/architecture-design/
 - Agent: planner
-- Output: Technical design
+- 产出: 技术设计
 
-Stage 3: Task Planning
-- Invoke: skills/development/task-planning/
+阶段 3: 任务规划
+- 调用: skills/development/task-planning/
 - Agent: planner
-- Output: Task breakdown with estimates
+- 产出: 带估算的任务分解
 
-Stage 4: Implementation
-- Invoke: skills/development/implementation/
+阶段 4: 编码实现
+- 调用: skills/development/implementation/
 - Agent: coder
-- Output: Code + tests
+- 产出: 代码 + 测试
 
-Stage 5: Testing
-- Invoke: skills/development/testing/
+阶段 5: 测试
+- 调用: skills/development/testing/
 - Agent: coder
-- Output: Test suite
+- 产出: 测试套件
 
-Stage 6: Code Review
-- Invoke: skills/development/code-review/
+阶段 6: 代码审查
+- 调用: skills/development/code-review/
 - Agent: reviewer
-- Output: Review feedback
+- 产出: 审查反馈
 ```
 
-### Example 2: Bug Fix
+## 最佳实践
 
-**Old approach**:
-```
-1. Investigate bug
-2. Fix code
-3. Test fix
-```
+### 1. 始终使用工作流
+不要跳过阶段 - 工作流确保质量和完整性。
 
-**New approach**:
-```markdown
-Follow workflows/bugfix.md:
+### 2. 任务匹配 Agent
+使用正确的 Agent 做正确的事:
+- **规划** → planner
+- **编码** → coder
+- **审查** → reviewer
+- **调试** → debugger
 
-Stage 1: Bug Investigation
-- Invoke: skills/development/debugging/
-- Agent: debugger
-- Output: Root cause analysis
+### 3. 遵循技能结构
+每个技能提供:
+- 目的
+- 流程
+- 输入/输出格式
+- 示例
 
-Stage 2: Fix Implementation
-- Invoke: skills/development/implementation/
-- Agent: coder
-- Output: Fix + regression test
+一致地使用它们。
 
-Stage 3: Verification
-- Invoke: skills/development/testing/
-- Agent: coder
-- Output: Verified fix
+### 4. 利用模板
+使用模板确保:
+- 项目文档 (AGENTS.md)
+- 任务规格 (task.md)
+- 实施计划 (plan.md)
 
-Stage 4: Review
-- Invoke: skills/development/code-review/
-- Agent: reviewer
-- Output: Approval
-```
+### 5. 保持一致性
+- 遵循 rules/ 规范
+- 使用标准工作流
+- 应用一致的 Agent 行为
+- 按模板格式化输出
 
-## Best Practices
+## 常见问题
 
-### 1. Always Use Workflows
-Don't skip stages - workflows ensure quality and completeness.
+### 问: 每个任务都要用所有 Agent 吗？
+答: 不需要。只使用任务需要的 Agent。小任务可能只需要一个 Agent。
 
-### 2. Match Agent to Task
-Use the right agent for the right task:
-- **Planning** → planner
-- **Coding** → coder
-- **Review** → reviewer
-- **Debugging** → debugger
+### 问: 可以自定义工作流吗？
+答: 可以。工作流是指导方针。根据项目需要调整，同时保持质量门禁。
 
-### 3. Follow Skill Structure
-Each skill provides:
-- Purpose
-- Process
-- Input/Output format
-- Examples
+### 问: 项目特定的技能放哪里？
+答: 放在 `skills/business/[项目名]/`。
 
-Use them consistently.
+### 问: 需要更新现有技能吗？
+答: 不急。旧技能仍然有效。重构时逐步迁移。
 
-### 4. Leverage Templates
-Use templates for:
-- Project documentation (AGENTS.md)
-- Task specifications (task.md)
-- Implementation plans (plan.md)
-
-### 5. Maintain Consistency
-- Follow rules/ standards
-- Use standard workflows
-- Apply consistent agent behaviors
-- Format output per templates
-
-## FAQ
-
-### Q: Do I need to use all agents for every task?
-A: No. Use only the agents appropriate for your task. Small tasks might only need one agent.
-
-### Q: Can I customize workflows?
-A: Yes. Workflows are guidelines. Adapt them to your project needs while maintaining the quality gates.
-
-### Q: Where do project-specific skills go?
-A: Keep them in `skills/business/[project-name]/` or create `skills/project/[project-name]/`
-
-### Q: Should I update existing skills?
-A: Not immediately. Old skills still work. Migrate gradually as you refactor.
-
-### Q: How do I choose between workflows?
-A: Match the workflow to your task type:
-- feature.md → New functionality
-- bugfix.md → Fixing issues
-- refactor.md → Improving code
-- review.md → Reviewing code
-- testing.md → Writing tests
-- release.md → Deploying
-
-## Rollout Plan
-
-### Phase 1: Immediate (Week 1)
-- [x] Create new directory structure
-- [x] Add workflow definitions
-- [x] Add agent definitions
-- [x] Create development skills
-- [x] Update documentation
-
-### Phase 2: Adoption (Week 2-3)
-- [ ] Update project CLAUDE.md files
-- [ ] Train team on new structure
-- [ ] Migrate critical skills
-- [ ] Document custom workflows
-
-### Phase 3: Optimization (Week 4+)
-- [ ] Gather feedback
-- [ ] Refine workflows
-- [ ] Add technology skills
-- [ ] Expand agent capabilities
-
-## Support
-
-For questions or issues with the new structure:
-1. Review docs/architecture.md
-2. Check relevant workflow/agent/skill documentation
-3. Refer to this migration guide
-4. Ask team lead or architect
+### 问: 怎么选择工作流？
+答: 按任务类型匹配:
+- feature.md → 新功能
+- bugfix.md → 修复问题
+- refactor.md → 改善代码
+- review.md → 审查代码
+- testing.md → 编写测试
+- release.md → 部署发布

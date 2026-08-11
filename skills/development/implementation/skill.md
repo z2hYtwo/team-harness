@@ -1,208 +1,101 @@
 ---
 name: implementation
-description: Write production-quality code following best practices
+description: 编写遵循最佳实践的生产级代码
 agent: coder
 ---
 
-# Implementation Skill
+# 编码实现技能
 
-## Purpose
-Transform design and task specifications into clean, efficient, maintainable production code.
+## 目的
+将设计和任务规格转化为简洁、高效、可维护的生产级代码。
 
-## Process
+## 流程
 
-### 1. Task Understanding
-- Review task requirements
-- Understand acceptance criteria
-- Check architecture design
-- Identify dependencies
+### 1. 任务理解
+- 审查任务需求
+- 理解验收标准
+- 检查架构设计
+- 识别依赖关系
 
-### 2. Code Writing
-- Write implementation code
-- Follow coding standards
-- Apply design patterns
-- Handle edge cases
+### 2. 编码
+- 编写实现代码
+- 遵循编码规范
+- 应用设计模式
+- 处理边界情况
 
-### 3. Testing
-- Write unit tests
-- Ensure coverage
-- Test edge cases
-- Verify functionality
+### 3. 测试
+- 编写单元测试
+- 确保覆盖率
+- 测试边界情况
+- 验证功能
 
-### 4. Documentation
-- Add inline comments for complex logic
-- Document public APIs
-- Update relevant docs
+### 4. 文档
+- 为复杂逻辑添加注释
+- 记录公共 API
+- 更新相关文档
 
-## Coding Guidelines
+## 编码规范
 
-### Code Quality
-- **Clear naming**: Use descriptive names, avoid abbreviations
-- **Single Responsibility**: Each function/class does one thing
-- **DRY**: Don't repeat yourself
-- **Small functions**: Keep functions focused and short
-- **Consistent formatting**: Follow project style guide
+### 代码质量
+- **清晰命名**: 使用描述性名称，避免缩写
+- **单一职责**: 每个函数/类只做一件事
+- **DRY**: 不重复自己
+- **小函数**: 保持函数专注和简短
+- **格式一致**: 遵循项目风格指南
 
-### Error Handling
-- Validate inputs at system boundaries
-- Provide meaningful error messages
-- Use appropriate exception types
-- Log errors with context
+### 错误处理
+- 在系统边界处验证输入
+- 提供有意义的错误信息
+- 使用恰当的异常类型
+- 带上下文记录日志
 
-### Security
-- Sanitize all user inputs
-- Use parameterized queries (prevent SQL injection)
-- Validate and escape data
-- Protect sensitive information
+### 安全
+- 清洗所有用户输入
+- 使用参数化查询（防止 SQL 注入）
+- 验证和转义数据
+- 保护敏感信息
 
-### Performance
-- Choose appropriate data structures
-- Avoid premature optimization
-- Consider algorithm complexity
-- Profile when needed
+### 性能
+- 选择合适的数据结构
+- 避免过早优化
+- 考虑算法复杂度
+- 必要时做性能分析
 
-## Input
-- Task specification
-- Architecture design
-- Coding standards
-- Existing codebase context
+## 输入
+- 任务规格
+- 架构设计
+- 编码规范
+- 现有代码上下文
 
-## Output
-- Production code
-- Unit tests
-- Documentation updates
-- Implementation notes
+## 输出
+- 生产代码
+- 单元测试
+- 文档更新
+- 实现说明
 
-## Example
-
-**Task**: Implement user registration endpoint
-
-**Output**:
-```java
-@RestController
-@RequestMapping("/api/auth")
-@Validated
-public class AuthController {
-    
-    private final UserService userService;
-    private final EmailService emailService;
-    
-    @PostMapping("/register")
-    public ResponseEntity<UserResponse> register(
-            @Valid @RequestBody RegisterRequest request) {
-        
-        // Check if email already exists
-        if (userService.existsByEmail(request.getEmail())) {
-            throw new EmailAlreadyExistsException(request.getEmail());
-        }
-        
-        // Create user with hashed password
-        User user = userService.createUser(
-            request.getEmail(),
-            request.getPassword()
-        );
-        
-        // Send verification email
-        emailService.sendVerificationEmail(user);
-        
-        return ResponseEntity
-            .status(HttpStatus.CREATED)
-            .body(UserResponse.from(user));
-    }
-}
-
-// DTO with validation
-public record RegisterRequest(
-    @NotBlank
-    @Email
-    String email,
-    
-    @NotBlank
-    @Size(min = 8, max = 100)
-    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d).*$",
-             message = "Password must contain uppercase, lowercase, and digit")
-    String password
-) {}
-
-// Unit test
-@WebMvcTest(AuthController.class)
-class AuthControllerTest {
-    
-    @Test
-    void register_ValidRequest_ReturnsCreated() throws Exception {
-        RegisterRequest request = new RegisterRequest(
-            "user@example.com",
-            "SecurePass123"
-        );
-        
-        mockMvc.perform(post("/api/auth/register")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
-            .andExpect(status().isCreated())
-            .andExpect(jsonPath("$.email").value("user@example.com"));
-    }
-    
-    @Test
-    void register_DuplicateEmail_ThrowsException() throws Exception {
-        when(userService.existsByEmail(anyString())).thenReturn(true);
-        
-        RegisterRequest request = new RegisterRequest(
-            "existing@example.com",
-            "SecurePass123"
-        );
-        
-        mockMvc.perform(post("/api/auth/register")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
-            .andExpect(status().isConflict());
-    }
-    
-    @Test
-    void register_InvalidPassword_ReturnsBadRequest() throws Exception {
-        RegisterRequest request = new RegisterRequest(
-            "user@example.com",
-            "weak"  // Too short, no uppercase/digit
-        );
-        
-        mockMvc.perform(post("/api/auth/register")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
-            .andExpect(status().isBadRequest());
-    }
-}
-```
-
-**Implementation Notes**:
-- Used Bean Validation for input validation
-- Password pattern enforces strong password policy
-- Checked for duplicate email before creating user
-- Used record for immutable DTO
-- Comprehensive test coverage (happy path + error cases)
-- Follows RESTful conventions (POST, 201 Created)
-
-## Best Practices
+## 最佳实践
 
 ### Java/Spring Boot
-- Use constructor injection
-- Leverage Spring Boot auto-configuration
-- Use `@Valid` for request validation
-- Return appropriate HTTP status codes
-- Use records for immutable DTOs
+- 使用构造函数注入
+- 利用 Spring Boot 自动配置
+- 用 `@Valid` 做请求校验
+- 返回恰当的 HTTP 状态码
+- 用 record 做不可变 DTO
 
-### Testing
-- Test happy path and error cases
-- Use meaningful test names
-- Mock external dependencies
-- Aim for >80% coverage on business logic
-- Test edge cases and boundary conditions
+### 测试
+- 测试正常路径和异常路径
+- 使用有意义的测试名称
+- Mock 外部依赖
+- 业务逻辑覆盖率 >80%
+- 测试边界条件
 
-### Documentation
-- Document complex algorithms
-- Explain non-obvious decisions
-- Keep comments up to date
-- Don't document obvious code
+### 文档
+- 记录复杂算法
+- 解释非显而易见的决策
+- 保持注释与代码同步
+- 不记录显而易见的代码
 
-## Related Skills
-- `/task-planning` - Plan before implementing
-- `/testing` - Write comprehensive tests
-- `/code-review` - Review implementation
+## 关联技能
+- `/task-planning` - 先规划再实现
+- `/testing` - 编写全面测试
+- `/code-review` - 审查实现

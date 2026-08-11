@@ -1,298 +1,163 @@
 ---
 name: debugging
-description: Systematically identify and resolve bugs
+description: 系统化识别和解决 Bug
 agent: debugger
 ---
 
-# Debugging Skill
+# 调试技能
 
-## Purpose
-Systematically diagnose and fix bugs through structured investigation and root cause analysis.
+## 目的
+通过结构化调查和根因分析，系统化地诊断和修复 Bug。
 
-## Process
+## 流程
 
-### 1. Bug Understanding
-- Read bug report carefully
-- Clarify reproduction steps
-- Understand expected vs actual behavior
-- Gather environment details
+### 1. 问题理解
+- 仔细阅读 Bug 报告
+- 澄清复现步骤
+- 理解预期与实际行为的差异
+- 收集环境信息
 
-### 2. Reproduction
-- Set up test environment
-- Follow reproduction steps
-- Confirm the bug
-- Document observations
+### 2. 复现
+- 搭建测试环境
+- 按步骤复现
+- 确认 Bug 存在
+- 记录观察结果
 
-### 3. Investigation
-- Review relevant code
-- Analyze stack traces
-- Check logs
-- Use debugging tools
+### 3. 调查
+- 审查相关代码
+- 分析堆栈信息
+- 检查日志
+- 使用调试工具
 
-### 4. Root Cause Analysis
-- Identify the exact cause
-- Understand why it happens
-- Check for related issues
-- Assess impact
+### 4. 根因分析
+- 定位确切原因
+- 理解触发条件
+- 排查关联问题
+- 评估影响范围
 
-### 5. Fix Implementation
-- Design minimal fix
-- Implement solution
-- Add regression test
-- Verify fix works
+### 5. 修复实现
+- 设计最小修复方案
+- 实现解决方案
+- 添加回归测试
+- 验证修复有效
 
-## Debugging Techniques
+## 调试技术
 
-### Code Analysis
-- **Static analysis**: Read code flow
-- **Git blame**: Find when code was introduced
-- **Git log**: Check related changes
-- **Dependency analysis**: Check upstream/downstream
+### 代码分析
+- **静态分析**: 阅读代码流程
+- **Git blame**: 找到代码引入时间
+- **Git log**: 检查相关变更
+- **依赖分析**: 检查上下游
 
-### Dynamic Analysis
-- **Logging**: Add strategic log statements
-- **Debugging**: Use breakpoints and stepping
-- **Profiling**: Identify performance issues
-- **Tracing**: Follow execution path
+### 动态分析
+- **日志**: 添加策略性日志语句
+- **调试**: 使用断点和单步执行
+- **性能分析**: 识别性能问题
+- **追踪**: 跟踪执行路径
 
-### Systematic Approach
-- **Binary search**: Narrow down problem area
-- **Hypothesis testing**: Form and test theories
-- **Isolation**: Remove variables one by one
-- **Comparison**: Compare working vs broken cases
+### 系统方法
+- **二分法**: 缩小问题范围
+- **假设验证**: 提出并验证理论
+- **隔离法**: 逐一排除变量
+- **对比法**: 比较正常和异常情况
 
-## Input
-- Bug report with reproduction steps
-- Stack traces or error logs
-- Environment information
-- Expected behavior
+## 输入
+- Bug 报告及复现步骤
+- 堆栈信息或错误日志
+- 环境信息
+- 预期行为
 
-## Output
+## 输出
 ```markdown
-## Bug Analysis
+## Bug 分析
 
-### Bug Description
-**Title**: [Bug title]
-**Severity**: Critical/High/Medium/Low
-**Environment**: [Where it occurs]
+### Bug 描述
+**标题**: [Bug 标题]
+**严重程度**: 严重/高/中/低
+**环境**: [发生环境]
 
-### Reproduction
-**Steps**:
-1. Step 1
-2. Step 2
+### 复现
+**步骤:**
+1. 步骤 1
+2. 步骤 2
 
-**Expected**: [What should happen]
-**Actual**: [What happens]
+**预期:** [应该发生什么]
+**实际:** [实际发生什么]
 
-### Root Cause
-**Location**: [File:Line]
-**Cause**: [Technical explanation]
-**Why it happens**: [Detailed analysis]
+### 根因
+**位置:** [文件:行号]
+**原因:** [技术解释]
+**触发条件:** [详细分析]
 
-### Impact
-- **Affected users**: [Who is impacted]
-- **Affected features**: [What breaks]
-- **Urgency**: [How urgent]
+### 影响
+- **受影响用户**: [谁受影响]
+- **受影响功能**: [什么坏了]
+- **紧急程度**: [多紧急]
 
-### Solution
-**Approach**: [Chosen fix]
-**Alternatives**: [Other options considered]
-**Trade-offs**: [Any compromises]
+### 解决方案
+**方案:** [选定的修复方式]
+**备选方案:** [其他考虑的选项]
+**权衡:** [任何折衷]
 
-### Fix
-[Code changes]
+### 修复代码
+[代码变更]
 
-### Verification
-- [ ] Bug fixed
-- [ ] Regression test added
-- [ ] No side effects
-- [ ] Edge cases tested
+### 验证
+- [ ] Bug 已修复
+- [ ] 回归测试已添加
+- [ ] 无副作用
+- [ ] 边界情况已测试
 ```
 
-## Example
+## 常见 Bug 模式
 
-**Input**: "Users can't log in - getting 500 error"
+### 空指针异常
+- 解引用前检查 null
+- 使用 Optional 或 null 检查
+- 验证输入
 
-**Investigation**:
-```markdown
-### Bug Analysis
+### 并发修改异常
+- 迭代时不修改集合
+- 使用线程安全集合
+- 同步访问
 
-#### Bug Description
-**Title**: Login endpoint returns 500 Internal Server Error
-**Severity**: Critical
-**Environment**: Production, all users affected
+### 内存泄漏
+- 关闭资源 (try-with-resources)
+- 移除监听器
+- 清除引用
 
-#### Reproduction
-**Steps**:
-1. Navigate to /login
-2. Enter valid credentials
-3. Click "Login"
+### 性能问题
+- 检查 O(n²) 算法
+- 审查数据库查询 (N+1)
+- 分析热点路径
 
-**Expected**: User logged in, redirected to dashboard
-**Actual**: 500 error, user not logged in
+## 调试清单
 
-#### Investigation Steps
+### 信息收集
+- [ ] 复现步骤清晰
+- [ ] 环境信息已收集
+- [ ] 日志和堆栈已审查
+- [ ] 近期变更已识别 (git log)
 
-1. **Checked logs**:
-```
-java.lang.NullPointerException
-  at com.example.auth.AuthService.authenticate(AuthService.java:42)
-  at com.example.auth.AuthController.login(AuthController.java:28)
-```
+### 调查
+- [ ] 本地已复现 Bug
+- [ ] 根因已定位
+- [ ] 关联问题已排查
+- [ ] 影响已评估
 
-2. **Reviewed code** (AuthService.java:42):
-```java
-String hashedPassword = user.getPassword().hash();  // NPE here
-```
+### 修复
+- [ ] 最小修复已实现
+- [ ] 回归测试已添加
+- [ ] 边界情况已考虑
+- [ ] 副作用已检查
 
-3. **Analyzed user object**:
-- User object exists
-- But password field is null
+### 验证
+- [ ] 修复在测试环境验证通过
+- [ ] 无回归问题
+- [ ] 性能影响已评估
+- [ ] 文档已更新
 
-4. **Checked database**:
-- Password column added recently
-- Existing users have null passwords (migration issue)
-
-#### Root Cause
-**Location**: AuthService.java:42
-**Cause**: NullPointerException when calling .hash() on null password
-**Why**: Database migration added password column but didn't set values for existing users
-
-**Related Issue**: Migration script was incomplete
-
-#### Impact
-- **Affected users**: All users created before password migration
-- **Affected features**: Login, authentication
-- **Urgency**: Immediate - system is down
-
-#### Solution
-**Approach**: Two-part fix
-1. Handle null password gracefully (immediate fix)
-2. Data migration to populate passwords (follow-up)
-
-**Alternatives**:
-- Option A: Force password reset for all users (disruptive)
-- Option B: Lock out affected users (too restrictive)
-- Option C: Handle null + gradual migration (chosen - least disruptive)
-
-#### Fix
-
-**Immediate Fix** (AuthService.java):
-```java
-public boolean authenticate(String email, String password) {
-    User user = userRepository.findByEmail(email)
-        .orElseThrow(() -> new UserNotFoundException(email));
-    
-    // Handle legacy users without password
-    if (user.getPassword() == null) {
-        logger.warn("User {} has null password, forcing reset", email);
-        throw new PasswordResetRequiredException(
-            "Please reset your password"
-        );
-    }
-    
-    return passwordEncoder.matches(password, user.getPassword());
-}
-```
-
-**Data Migration** (Follow-up):
-```java
-@Service
-public class UserMigrationService {
-    
-    @Transactional
-    public void migrateNullPasswords() {
-        List<User> usersWithNullPassword = 
-            userRepository.findByPasswordIsNull();
-        
-        for (User user : usersWithNullPassword) {
-            // Generate temp password, send reset email
-            String tempPassword = generateTempPassword();
-            user.setPassword(passwordEncoder.encode(tempPassword));
-            userRepository.save(user);
-            emailService.sendPasswordResetEmail(user, tempPassword);
-        }
-        
-        logger.info("Migrated {} users", usersWithNullPassword.size());
-    }
-}
-```
-
-**Regression Test**:
-```java
-@Test
-void authenticate_NullPassword_ThrowsPasswordResetRequired() {
-    User user = new User("user@example.com", null);  // null password
-    when(userRepository.findByEmail(anyString()))
-        .thenReturn(Optional.of(user));
-    
-    assertThrows(PasswordResetRequiredException.class,
-        () -> authService.authenticate("user@example.com", "any"));
-}
-```
-
-#### Verification
-- [x] Bug fixed - null password handled gracefully
-- [x] Regression test added
-- [x] No side effects - users with valid passwords unaffected
-- [x] Edge cases tested - null password case
-- [ ] Data migration scheduled (follow-up task)
-
-#### Lessons Learned
-- Always handle null values for nullable database columns
-- Migration scripts should populate data, not just schema
-- Consider existing data when adding required fields
-```
-
-## Debugging Checklist
-
-### Information Gathering
-- [ ] Reproduction steps clear
-- [ ] Environment details collected
-- [ ] Logs and stack traces reviewed
-- [ ] Recent changes identified (git log)
-
-### Investigation
-- [ ] Bug reproduced locally
-- [ ] Root cause identified
-- [ ] Related issues checked
-- [ ] Impact assessed
-
-### Fix
-- [ ] Minimal fix implemented
-- [ ] Regression test added
-- [ ] Edge cases considered
-- [ ] Side effects checked
-
-### Verification
-- [ ] Fix verified in test environment
-- [ ] No regressions introduced
-- [ ] Performance impact assessed
-- [ ] Documentation updated
-
-## Common Bug Patterns
-
-### NullPointerException
-- Check for null before dereferencing
-- Use Optional or null checks
-- Validate inputs
-
-### ConcurrentModificationException
-- Don't modify collection while iterating
-- Use thread-safe collections
-- Synchronize access
-
-### Memory Leaks
-- Close resources (try-with-resources)
-- Remove listeners
-- Clear references
-
-### Performance Issues
-- Check O(n²) algorithms
-- Review database queries (N+1)
-- Profile hot paths
-
-## Related Skills
-- `/implementation` - Implement the fix
-- `/testing` - Verify the fix
-- `/code-review` - Review fix quality
+## 关联技能
+- `/implementation` - 实现修复
+- `/testing` - 验证修复
+- `/code-review` - 审查修复质量

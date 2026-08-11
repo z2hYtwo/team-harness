@@ -1,130 +1,127 @@
 ---
 name: architecture-design
-description: Design technical architecture and system components
+description: 设计技术架构和系统组件
 agent: planner
 ---
 
-# Architecture Design Skill
+# 架构设计技能
 
-## Purpose
-Design scalable, maintainable technical architecture for features and systems.
+## 目的
+为特性和系统设计可扩展、可维护的技术架构。
 
-## Process
+## 流程
 
-### 1. Requirement Review
-- Understand functional requirements
-- Identify non-functional requirements
-- Note constraints and assumptions
+### 1. 需求审查
+- 理解功能性需求
+- 识别非功能性需求
+- 记录约束和假设
 
-### 2. High-Level Design
-- Define system components
-- Design component interactions
-- Choose technology stack
-- Plan data flow
+### 2. 高层设计
+- 定义系统组件
+- 设计组件交互
+- 选择技术栈
+- 规划数据流
 
-### 3. Detailed Design
-- Define APIs and interfaces
-- Design data models
-- Plan error handling
-- Consider security
+### 3. 详细设计
+- 定义 API 和接口
+- 设计数据模型
+- 规划错误处理
+- 考虑安全性
 
-### 4. Design Validation
-- Review against requirements
-- Assess scalability
-- Evaluate maintainability
-- Consider trade-offs
+### 4. 设计验证
+- 对照需求审查
+- 评估可扩展性
+- 评价可维护性
+- 分析取舍
 
-## Input
-- Requirements specification
-- System constraints
-- Technology preferences
-- Existing architecture
+## 输入
+- 需求规格
+- 系统约束
+- 技术偏好
+- 现有架构
 
-## Output
+## 输出
 ```markdown
-## Architecture Design
+## 架构设计
 
-### High-Level Architecture
-[Component diagram or description]
+### 高层架构
+[组件图或描述]
 
-### Components
-**Component A**: [Purpose]
-- Responsibilities: [What it does]
-- Interfaces: [How it's accessed]
-- Dependencies: [What it needs]
+### 组件
+**组件 A**: [用途]
+- 职责: [做什么]
+- 接口: [如何访问]
+- 依赖: [需要什么]
 
-### Data Model
-[Entity relationships]
+### 数据模型
+[实体关系]
 
-### API Design
-Endpoint: [Method] [Path]
-Request: [Schema]
-Response: [Schema]
+### API 设计
+接口: [方法] [路径]
+请求: [Schema]
+响应: [Schema]
 
-### Technology Stack
-- Language: [Choice and why]
-- Framework: [Choice and why]
-- Database: [Choice and why]
-- Libraries: [List with justification]
+### 技术栈
+- 语言: [选择及原因]
+- 框架: [选择及原因]
+- 数据库: [选择及原因]
+- 依赖库: [列表及理由]
 
-### Design Decisions
-**Decision**: [What was decided]
-- Options: [A, B, C]
-- Chosen: [A]
-- Rationale: [Why]
+### 设计决策
+**决策**: [决定了什么]
+- 备选: [A, B, C]
+- 选定: [A]
+- 理由: [为什么]
 
-### Non-Functional Considerations
-- Performance: [How addressed]
-- Security: [How addressed]
-- Scalability: [How addressed]
-- Maintainability: [How addressed]
+### 非功能性考量
+- 性能: [如何解决]
+- 安全: [如何解决]
+- 可扩展性: [如何解决]
+- 可维护性: [如何解决]
 ```
 
-## Example
+## 示例
 
-**Input**: User authentication requirements
+**输入**: 用户认证需求
 
-**Output**:
+**输出**:
 ```markdown
-### High-Level Architecture
-```
+### 高层架构
 ┌─────────────┐
-│   Client    │
+│   客户端    │
 └──────┬──────┘
        │
        ↓
 ┌─────────────┐
-│  Auth API   │
+│  认证 API   │
 └──────┬──────┘
        │
        ├──→ ┌──────────────┐
-       │    │ User Service │
+       │    │  用户服务    │
        │    └──────────────┘
        │
        └──→ ┌──────────────┐
-            │ Email Service│
+            │  邮件服务    │
             └──────────────┘
-```
 
-### Components
+### 组件
 
-**Auth API**
-- Responsibilities: Handle authentication requests
-- Interfaces: REST API (POST /auth/register, /auth/login, /auth/logout)
-- Dependencies: User Service, Email Service
+**认证 API**
+- 职责: 处理认证请求
+- 接口: REST API (POST /auth/register, /auth/login, /auth/logout)
+- 依赖: 用户服务, 邮件服务
 
-**User Service**
-- Responsibilities: User CRUD, password management
-- Interfaces: Internal service calls
-- Dependencies: User Database
+**用户服务**
+- 职责: 用户 CRUD, 密码管理
+- 接口: 内部服务调用
+- 依赖: 用户数据库
 
-**Email Service**
-- Responsibilities: Send emails (verification, password reset)
-- Interfaces: Internal service calls
-- Dependencies: Email provider API
+**邮件服务**
+- 职责: 发送邮件（验证, 密码重置）
+- 接口: 内部服务调用
+- 依赖: 邮件服务商 API
 
-### Data Model
-```sql
+### 数据模型
 Table: users
 - id (UUID, PK)
 - email (VARCHAR, UNIQUE, NOT NULL)
@@ -138,63 +135,27 @@ Table: sessions
 - token (VARCHAR, UNIQUE)
 - expires_at (TIMESTAMP)
 - created_at (TIMESTAMP)
+
+### 技术栈
+- **语言**: Java 17 (项目标准)
+- **框架**: Spring Boot 3.2 (现有技术栈)
+- **安全**: Spring Security + JWT (行业标准)
+- **数据库**: PostgreSQL (现有基础设施)
+- **密码哈希**: BCrypt (安全最佳实践)
+
+### 设计决策
+
+**决策**: 使用 JWT 管理会话
+- 备选: 服务端 Session, JWT, OAuth2
+- 选定: JWT
+- 理由: 无状态, 可扩展, 对移动端友好
+
+**决策**: 独立用户服务
+- 备选: 单体 Controller, 独立服务
+- 选定: 独立服务
+- 理由: 更好的关注点分离, 可复用
 ```
 
-### API Design
-
-**Register**
-```
-POST /api/auth/register
-Request: {
-  "email": "user@example.com",
-  "password": "SecurePass123!"
-}
-Response: {
-  "userId": "uuid",
-  "email": "user@example.com",
-  "message": "Registration successful"
-}
-```
-
-**Login**
-```
-POST /api/auth/login
-Request: {
-  "email": "user@example.com",
-  "password": "SecurePass123!"
-}
-Response: {
-  "token": "jwt-token",
-  "expiresIn": 3600
-}
-```
-
-### Technology Stack
-- **Language**: Java 17 (project standard)
-- **Framework**: Spring Boot 3.2 (existing stack)
-- **Security**: Spring Security + JWT (industry standard)
-- **Database**: PostgreSQL (existing infrastructure)
-- **Password Hashing**: BCrypt (security best practice)
-
-### Design Decisions
-
-**Decision**: Use JWT for session management
-- Options: Server-side sessions, JWT, OAuth2
-- Chosen: JWT
-- Rationale: Stateless, scalable, mobile-friendly
-
-**Decision**: Separate User Service
-- Options: Monolithic controller, Separate service
-- Chosen: Separate service
-- Rationale: Better separation of concerns, reusable
-
-### Non-Functional Considerations
-- **Performance**: JWT validation is fast (< 10ms)
-- **Security**: HTTPS required, passwords hashed with BCrypt (cost 12)
-- **Scalability**: Stateless design allows horizontal scaling
-- **Maintainability**: Clear component boundaries, standard patterns
-```
-
-## Related Skills
-- `/requirement-analysis` - Analyze requirements first
-- `/task-planning` - Create implementation tasks
+## 关联技能
+- `/requirement-analysis` - 先分析需求
+- `/task-planning` - 创建实施任务

@@ -1,44 +1,44 @@
-# Code Review Workflow
+# 代码审查工作流
 
-## Overview
-Comprehensive code review process ensuring quality and knowledge sharing.
+## 概述
+全面的代码审查流程，确保质量和知识共享。
 
-## Stages
+## 阶段
 
-### 1. Pre-Review Checklist
-- Self-review completed
-- Tests passing
-- Documentation updated
-- CI/CD checks passing
+### 1. 预审查清单
+- 自查已完成
+- 测试通过
+- 文档已更新
+- CI/CD 检查通过
 
-### 2. Review Execution
-- Check code correctness
-- Verify test coverage
-- Review security implications
-- Assess performance impact
-- Skill: `/code-review`
+### 2. 审查执行
+- 检查代码正确性
+- 验证测试覆盖率
+- 审查安全隐患
+- 评估性能影响
+- 技能: `/code-review`
 
-### 3. Feedback & Discussion
-- Provide constructive feedback
-- Discuss design alternatives
-- Clarify requirements
+### 3. 反馈与讨论
+- 提供建设性反馈
+- 讨论设计替代方案
+- 澄清需求
 
-### 4. Resolution
-- Address review comments
-- Re-review if substantial changes
-- Approve when ready
+### 4. 问题解决
+- 处理审查意见
+- 重大修改需再次审查
+- 达标后批准
 
-### 5. Merge & Monitor
-- Merge to target branch
-- Monitor deployment
-- Watch for issues
+### 5. 合并与监控
+- 合并到目标分支
+- 监控部署
+- 关注异常
 
-## Entry Criteria
-- Pull request created
-- All CI checks passing
-- Description and context provided
+## 进入条件
+- Pull Request 已创建
+- 所有 CI 检查通过
+- 提供了描述和上下文
 
-## Exit Criteria
-- All comments resolved
-- Approved by required reviewers
-- Merged successfully
+## 退出条件
+- 所有评论已解决
+- 获得必要的审批
+- 成功合并

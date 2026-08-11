@@ -1,45 +1,45 @@
-# Refactor Workflow
+# 重构工作流
 
-## Overview
-Improve code structure and maintainability without changing functionality.
+## 概述
+在不改变功能的前提下，改善代码结构和可维护性。
 
-## Stages
+## 阶段
 
-### 1. Analysis
-- Identify code smells
-- Measure current metrics (complexity, duplication)
-- Define refactoring goals
+### 1. 分析
+- 识别代码异味
+- 度量当前指标（复杂度、重复率）
+- 明确重构目标
 
-### 2. Planning
-- Plan refactoring steps
-- Identify affected components
-- Assess risk
-- Skill: `/task-planning`
+### 2. 规划
+- 规划重构步骤
+- 识别受影响组件
+- 评估风险
+- 技能: `/task-planning`
 
-### 3. Refactoring
-- Apply refactoring patterns
-- Maintain test coverage
-- Keep commits atomic
-- Skill: `/implementation`
+### 3. 重构执行
+- 应用重构模式
+- 保持测试覆盖率
+- 保持提交原子性
+- 技能: `/implementation`
 
-### 4. Verification
-- Ensure all tests still pass
-- Verify no behavior changes
-- Check performance impact
-- Skill: `/testing`
+### 4. 验证
+- 确保所有测试仍然通过
+- 验证无行为变更
+- 检查性能影响
+- 技能: `/testing`
 
-### 5. Review
-- Code review
-- Document changes
-- Update architecture docs
-- Skill: `/code-review`
+### 5. 审查
+- 代码审查
+- 记录变更
+- 更新架构文档
+- 技能: `/code-review`
 
-## Entry Criteria
-- Code quality concerns identified
-- Stakeholder approval for effort
+## 进入条件
+- 已识别代码质量问题
+- 获得相关方批准
 
-## Exit Criteria
-- Code quality improved
-- All tests passing
-- No functionality changes
-- Documentation updated
+## 退出条件
+- 代码质量提升
+- 所有测试通过
+- 无功能变更
+- 文档已更新

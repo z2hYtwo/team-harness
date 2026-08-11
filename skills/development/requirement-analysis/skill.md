@@ -1,109 +1,109 @@
 ---
 name: requirement-analysis
-description: Analyze and clarify user requirements
+description: 分析和澄清用户需求
 agent: planner
 ---
 
-# Requirement Analysis Skill
+# 需求分析技能
 
-## Purpose
-Transform user requests into clear, actionable requirements with acceptance criteria.
+## 目的
+将用户请求转化为清晰、可执行的需求，并定义验收标准。
 
-## Process
+## 流程
 
-### 1. Requirement Elicitation
-- Listen to user needs
-- Ask clarifying questions
-- Identify implicit requirements
-- Understand context and constraints
+### 1. 需求获取
+- 倾听用户需求
+- 提出澄清问题
+- 识别隐含需求
+- 理解上下文和约束
 
-### 2. Requirement Analysis
-- Categorize requirements (functional/non-functional)
-- Identify dependencies
-- Assess feasibility
-- Prioritize requirements
+### 2. 需求分析
+- 分类需求（功能性/非功能性）
+- 识别依赖关系
+- 评估可行性
+- 排列优先级
 
-### 3. Requirement Specification
-- Write clear requirement statements
-- Define acceptance criteria
-- Document assumptions
-- Note constraints
+### 3. 需求规格化
+- 编写清晰的需求陈述
+- 定义验收标准
+- 记录假设条件
+- 标注约束条件
 
-### 4. Requirement Validation
-- Review with stakeholders
-- Ensure completeness
-- Verify testability
-- Confirm understanding
+### 4. 需求验证
+- 与相关方确认
+- 确保完整性
+- 验证可测试性
+- 确认理解一致
 
-## Input
-- User request or feature description
-- Project context
-- Existing system constraints
+## 输入
+- 用户请求或特性描述
+- 项目上下文
+- 现有系统约束
 
-## Output
+## 输出
 ```markdown
-## Requirements
+## 需求文档
 
-### Functional Requirements
-- **FR-1**: [Clear, testable requirement]
-- **FR-2**: [Clear, testable requirement]
+### 功能性需求
+- **FR-1**: [清晰、可测试的需求]
+- **FR-2**: [清晰、可测试的需求]
 
-### Non-Functional Requirements
-- **NFR-1**: Performance - [Specific metric]
-- **NFR-2**: Security - [Specific requirement]
+### 非功能性需求
+- **NFR-1**: 性能 - [具体指标]
+- **NFR-2**: 安全 - [具体要求]
 
-### Acceptance Criteria
-- [ ] AC-1: [Specific, testable criterion]
-- [ ] AC-2: [Specific, testable criterion]
+### 验收标准
+- [ ] AC-1: [具体、可测试的标准]
+- [ ] AC-2: [具体、可测试的标准]
 
-### Assumptions
-- [Assumption 1]
+### 假设条件
+- [假设 1]
 
-### Constraints
-- [Constraint 1]
+### 约束条件
+- [约束 1]
 
-### Out of Scope
-- [What's not included]
+### 不包含范围
+- [不在此次范围内的内容]
 ```
 
-## Example
+## 示例
 
-**Input**: "Add user authentication"
+**输入**: "添加用户认证"
 
-**Output**:
+**输出**:
 ```markdown
-### Functional Requirements
-- **FR-1**: Users must be able to register with email and password
-- **FR-2**: Users must be able to log in with credentials
-- **FR-3**: System must support password reset via email
-- **FR-4**: Users must be able to log out
+### 功能性需求
+- **FR-1**: 用户可以通过邮箱和密码注册
+- **FR-2**: 用户可以使用凭证登录
+- **FR-3**: 系统支持通过邮箱重置密码
+- **FR-4**: 用户可以退出登录
 
-### Non-Functional Requirements
-- **NFR-1**: Passwords must be hashed using bcrypt
-- **NFR-2**: Session timeout after 30 minutes of inactivity
-- **NFR-3**: Login page must load within 2 seconds
+### 非功能性需求
+- **NFR-1**: 密码必须使用 bcrypt 哈希
+- **NFR-2**: 会话在 30 分钟不活跃后超时
+- **NFR-3**: 登录页面必须在 2 秒内加载
 
-### Acceptance Criteria
-- [ ] User can register with valid email and strong password
-- [ ] User cannot register with duplicate email
-- [ ] User can log in with correct credentials
-- [ ] User sees error message with incorrect credentials
-- [ ] User receives password reset email within 5 minutes
-- [ ] User session expires after 30 minutes
+### 验收标准
+- [ ] 用户可以用有效邮箱和强密码注册
+- [ ] 用户不能用重复邮箱注册
+- [ ] 用户可以用正确凭证登录
+- [ ] 错误凭证时显示错误信息
+- [ ] 用户在 5 分钟内收到密码重置邮件
+- [ ] 用户会话在 30 分钟后过期
 
-### Assumptions
-- Email service is available
-- Users have access to email
+### 假设条件
+- 邮件服务可用
+- 用户可以访问邮箱
 
-### Constraints
-- Must comply with GDPR
-- Must work on mobile and desktop
+### 约束条件
+- 必须符合数据保护法规
+- 必须支持移动端和桌面端
 
-### Out of Scope
-- Social login (OAuth)
-- Two-factor authentication
+### 不包含范围
+- 社交登录 (OAuth)
+- 双因素认证
 ```
 
-## Related Skills
-- `/architecture-design` - Design system architecture
-- `/task-planning` - Break down into tasks
+## 关联技能
+- `/architecture-design` - 设计系统架构
+- `/task-planning` - 分解为任务

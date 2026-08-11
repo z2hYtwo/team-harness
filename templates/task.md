@@ -1,64 +1,64 @@
-# Task Template
+# 任务模板
 
-## Task Information
-**Task ID**: [Unique identifier]
-**Title**: [Brief task description]
-**Type**: Feature / Bug / Refactor / Docs / Test
-**Priority**: Critical / High / Medium / Low
-**Effort**: [Estimated hours]
+## 任务信息
+**任务 ID**: [唯一标识]
+**标题**: [简要任务描述]
+**类型**: 特性 / Bug / 重构 / 文档 / 测试
+**优先级**: 紧急 / 高 / 中 / 低
+**工作量**: [预估小时数]
 
-## Context
-**Related Feature**: [Feature or epic this belongs to]
-**Dependencies**: [Other tasks this depends on]
-**Blocks**: [Tasks blocked by this]
+## 上下文
+**所属特性**: [该任务属于哪个特性或 Epic]
+**前置依赖**: [该任务依赖的其他任务]
+**阻塞任务**: [被该任务阻塞的任务]
 
-## Description
-[Detailed description of what needs to be done]
+## 描述
+[详细描述需要做什么]
 
-## Requirements
-- [ ] Requirement 1
-- [ ] Requirement 2
+## 需求
+- [ ] 需求 1
+- [ ] 需求 2
 
-## Acceptance Criteria
-- [ ] Criterion 1: [Specific, testable outcome]
-- [ ] Criterion 2: [Specific, testable outcome]
+## 验收标准
+- [ ] 标准 1: [具体、可测试的结果]
+- [ ] 标准 2: [具体、可测试的结果]
 
-## Implementation Notes
-**Files to modify**:
+## 实现说明
+**需修改文件**:
 - [file1.java]
 - [file2.java]
 
-**Approach**:
-[Brief technical approach]
+**技术方案**:
+[简要技术方案]
 
-**Considerations**:
-- [Technical consideration 1]
-- [Edge case 1]
+**注意事项**:
+- [技术注意事项 1]
+- [边界情况 1]
 
-## Testing
-**Unit Tests**:
-- [ ] Test case 1
-- [ ] Test case 2
+## 测试
+**单元测试**:
+- [ ] 测试用例 1
+- [ ] 测试用例 2
 
-**Integration Tests**:
-- [ ] Test scenario 1
+**集成测试**:
+- [ ] 测试场景 1
 
-**Manual Testing**:
-- [ ] Test step 1
+**手动测试**:
+- [ ] 测试步骤 1
 
-## Documentation
-- [ ] Code comments added
-- [ ] API docs updated
-- [ ] README updated (if needed)
+## 文档
+- [ ] 代码注释已添加
+- [ ] API 文档已更新
+- [ ] README 已更新（如需要）
 
-## Risks
-- **Risk**: [Description]
-  - Impact: High/Medium/Low
-  - Mitigation: [Plan]
+## 风险
+- **风险**: [描述]
+  - 影响: 高/中/低
+  - 缓解: [方案]
 
-## Progress
-- [ ] Task analyzed
-- [ ] Implementation complete
-- [ ] Tests written
-- [ ] Code reviewed
-- [ ] Merged
+## 进度
+- [ ] 任务已分析
+- [ ] 实现已完成
+- [ ] 测试已编写
+- [ ] 代码已审查
+- [ ] 已合并

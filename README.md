@@ -163,10 +163,11 @@ User: "审查 PR #123"
 ## Getting Started
 
 1. **了解架构**: 阅读 [docs/architecture.md](docs/architecture.md)
-2. **选择工作流**: 根据任务选择合适的 workflow
-3. **调用 Agent**: 使用对应的 Agent 执行任务
-4. **遵循规范**: 始终遵循 rules/ 中的编码规范
-5. **使用模板**: 使用 templates/ 确保输出一致
+2. **查看优化方案**: 阅读 [docs/optimization-design.md](docs/optimization-design.md)（Proposed）
+3. **选择工作流**: 根据任务选择合适的 workflow
+4. **调用 Agent**: 使用对应的 Agent 执行任务
+5. **遵循规范**: 始终遵循 rules/ 中的编码规范
+6. **使用模板**: 使用 templates/ 确保输出一致
 
 ---
 
